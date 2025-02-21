@@ -29,6 +29,8 @@ const NavBar = () => {
             })}
             href={link.href}
           >
+          
+
             {link.label}
           </Link>
         ))}
