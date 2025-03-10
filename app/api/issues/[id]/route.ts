@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { issuSchema } from "../validationSchemas";
+import { issueSchema } from "../validationSchemas";
 import prisma from "@/prisma/client";
 import { error } from "console";
 
@@ -11,7 +11,7 @@ export async function PATCH(
     request:NextRequest,
     {params} : {params:{id:string}} ){
         const body =await request.json();
-    const validation = issuSchema.safeParse(body);
+    const validation = issueSchema.safeParse(body);
     if (! validation.success)
         return NextResponse.json(validation.error.format(),{status:400});
     const issue = await prisma.issue.findUnique({
@@ -28,5 +28,5 @@ export async function PATCH(
         }
     });
     return NextResponse.json(updatesIssue);
-    
+
     }
