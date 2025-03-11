@@ -8,7 +8,9 @@ interface Props{
 
 export async function PATCH(
     request:NextRequest,
-    {params} : {params:{id:string}} ){
+    { params }: { params: { id: string } }
+)
+    {
         const body =await request.json();
     const validation = issueSchema.safeParse(body);
     if (! validation.success)
